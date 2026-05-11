@@ -1693,7 +1693,7 @@ const streamPlaceholder = document.getElementById('streamPlaceholder');
 if (streamContainer && streamFrame && streamPlaceholder) {
   const youtubeId = streamContainer.dataset.youtubeId.trim();
   if (youtubeId) {
-    streamFrame.src = `https://www.youtube.com/embed/${youtubeId}?autoplay=1&rel=0&modestbranding=1`;
+    streamFrame.src = `https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1&playsinline=1&rel=0`;
     streamFrame.style.display = 'block';
     streamPlaceholder.style.display = 'none';
   }
