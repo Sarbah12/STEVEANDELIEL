@@ -160,6 +160,28 @@
   .hero-date { font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,2.5vw,1.6rem);color:var(--white);font-weight:300;letter-spacing:.08em; }
   .hero-meta { font-size:clamp(.7rem,1.5vw,.85rem);color:rgba(255,255,255,.9);font-weight:300;line-height:2;margin-top:.4rem; }
   .hero-tag { font-size:clamp(.6rem,1.4vw,.72rem);letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.9);margin-top:1.5rem;font-weight:200;opacity:0;animation:fadeIn 1s ease 1.5s forwards; }
+  .hero-cta {
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    margin-top:1.5rem;
+    padding:.85rem 1.5rem;
+    border:1px solid rgba(255,255,255,.28);
+    color:var(--white);
+    text-decoration:none;
+    font-size:.68rem;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    font-weight:300;
+    transition:background .3s,border-color .3s,color .3s;
+    opacity:0;
+    animation:fadeIn 1s ease 1.7s forwards;
+  }
+  .hero-cta:hover {
+    background:rgba(255,255,255,.08);
+    border-color:rgba(255,255,255,.5);
+    color:var(--white);
+  }
   @media(max-width:768px){
     .hero-date { font-size:clamp(1.1rem,4vw,1.4rem); }
     .hero-meta { font-size:.75rem;letter-spacing:.05em; }
@@ -1136,7 +1158,7 @@
     <a href="#welcome">Welcome</a>
     <a href="#story">Our Story</a>
     <a href="#gallery">Gallery</a>
-    <a href="#itinerary">Itinerary</a>
+    <a href="outline.html">Programme</a>
     <a href="#venue">Venue</a>
     <a href="#livestream">Livestream</a>
     <a href="#rsvp">RSVP</a>
@@ -1148,7 +1170,7 @@
   <a href="#welcome" class="mob-link">Welcome</a>
   <a href="#story" class="mob-link">Our Story</a>
   <a href="#gallery" class="mob-link">Gallery</a>
-  <a href="#itinerary" class="mob-link">Itinerary</a>
+  <a href="outline.html" class="mob-link">Programme</a>
   <a href="#venue" class="mob-link">Venue</a>
   <a href="#livestream" class="mob-link">Livestream</a>
   <a href="#rsvp" class="mob-link">RSVP</a>
@@ -1174,6 +1196,7 @@
       <div class="hero-meta">12:00 Noon &nbsp;·&nbsp; Charismatic Evangelistic Ministry<br>North Legon, Accra, Ghana</div>
     </div>
     <p class="hero-tag" style="color:white;opacity:1;animation:none;">Together with their families · 16 · 05 · 2026</p>
+    <a href="outline.html" class="hero-cta">Programme Outline</a>
   </div>
   <div class="scroll-cue">
     <span>Scroll</span>
@@ -1450,55 +1473,6 @@
     </div>
   </div>
 
-</section>
-
-<!-- ══════════ ITINERARY ══════════ -->
-<section class="section itin-sect" id="itinerary">
-  <p class="sec-eyebrow fu">The Order of Events</p>
-  <h2 class="sec-title fu d1">Wedding <em>Itinerary</em></h2>
-  <div class="rainbow-rule fu d2"><div class="rr1"></div><div class="rr2"></div><div class="rr3"></div><div class="rr4"></div><div class="rr5"></div></div>
-  <div class="itin-wrap fu d3">
-    <div class="ii">
-      <div class="ii-dot"></div>
-      <div class="ii-content">
-        <div class="ii-time">11:30 AM</div>
-        <div class="ii-title">Welcome of Guests</div>
-        <p class="ii-desc">Guests are warmly welcomed and seated. Light refreshments and music set the mood for the celebration ahead.</p>
-      </div>
-    </div>
-    <div class="ii">
-      <div class="ii-dot"></div>
-      <div class="ii-content">
-        <div class="ii-time">12:00 Noon</div>
-        <div class="ii-title">Wedding Ceremony</div>
-        <p class="ii-desc">The official ceremony begins. Exchange of vows, rings, and a lifetime of promises — witnessed by those we love most.</p>
-      </div>
-    </div>
-    <div class="ii">
-      <div class="ii-dot"></div>
-      <div class="ii-content">
-        <div class="ii-time">After Ceremony</div>
-        <div class="ii-title">Cocktail &amp; Canapes</div>
-        <p class="ii-desc">Guests mingle and enjoy light refreshments while the wedding party captures their first moments as husband and wife.</p>
-      </div>
-    </div>
-    <div class="ii">
-      <div class="ii-dot"></div>
-      <div class="ii-content">
-        <div class="ii-time">Evening</div>
-        <div class="ii-title">Reception</div>
-        <p class="ii-desc">Dinner, speeches, toasts, first dance, and dancing into the night — an evening filled with joy, food, and celebration.</p>
-      </div>
-    </div>
-    <div class="ii">
-      <div class="ii-dot"></div>
-      <div class="ii-content">
-        <div class="ii-time">Closing</div>
-        <div class="ii-title">Acknowledgement</div>
-        <p class="ii-desc">A heartfelt moment of gratitude to family, friends, and everyone who made this day possible and unforgettable.</p>
-      </div>
-    </div>
-  </div>
 </section>
 
 <!-- ══════════ VENUE ══════════ -->
