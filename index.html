@@ -398,6 +398,67 @@
       linear-gradient(135deg,rgba(14,12,30,.94),rgba(51,64,196,.55)),
       radial-gradient(circle at top,rgba(196,56,138,.32),transparent 42%);
     text-align:center;
+    cursor:pointer;
+  }
+  .stream-placeholder-thumb {
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    opacity:.92;
+  }
+  .stream-thumbnail-mask {
+    position:absolute;
+    z-index:1;
+    pointer-events:none;
+  }
+  .stream-thumbnail-mask.bottom {
+    left:0;
+    right:0;
+    bottom:0;
+    height:72px;
+    background:linear-gradient(180deg,rgba(10,10,20,0),rgba(10,10,20,.92) 45%,rgba(10,10,20,.98));
+  }
+  .stream-thumbnail-mask.corner {
+    right:0;
+    bottom:0;
+    width:160px;
+    height:84px;
+    background:
+      radial-gradient(circle at top left,rgba(10,10,20,0),rgba(10,10,20,.9) 72%),
+      linear-gradient(135deg,rgba(10,10,20,.1),rgba(10,10,20,.98));
+  }
+  .stream-placeholder-overlay {
+    position:relative;
+    z-index:2;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:1rem;
+    padding:2rem;
+    width:100%;
+    height:100%;
+    background:linear-gradient(180deg,rgba(10,10,20,.2),rgba(10,10,20,.72));
+  }
+  .stream-play-btn {
+    width:76px;
+    height:76px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.28);
+    background:rgba(12,12,22,.45);
+    backdrop-filter:blur(10px);
+    display:grid;
+    place-items:center;
+    box-shadow:0 16px 40px rgba(0,0,0,.28);
+  }
+  .stream-play-btn::before {
+    content:'';
+    margin-left:5px;
+    border-style:solid;
+    border-width:12px 0 12px 18px;
+    border-color:transparent transparent transparent rgba(255,255,255,.96);
   }
   .stream-live-pill {
     display:inline-flex;
@@ -1478,9 +1539,15 @@
             allowfullscreen
             loading="lazy"
             referrerpolicy="strict-origin-when-cross-origin"></iframe>
-          <div class="stream-placeholder" id="streamPlaceholder">
-            <span class="stream-live-pill">Streaming Here</span>
-            <h3 class="stream-placeholder-title">Livestream Coming Soon</h3>
+          <div class="stream-placeholder" id="streamPlaceholder" role="button" tabindex="0" aria-label="Play wedding livestream">
+            <img class="stream-placeholder-thumb" id="streamThumbnail" alt="Steve and Eliel livestream thumbnail">
+            <span class="stream-thumbnail-mask bottom" aria-hidden="true"></span>
+            <span class="stream-thumbnail-mask corner" aria-hidden="true"></span>
+            <div class="stream-placeholder-overlay">
+              <span class="stream-live-pill">Streaming Here</span>
+              <span class="stream-play-btn" aria-hidden="true"></span>
+              <h3 class="stream-placeholder-title">Watch the Livestream</h3>
+            </div>
           </div>
         </div>
       </div>
@@ -1660,12 +1727,23 @@ document.querySelectorAll('.mob-link').forEach(a => {
 const streamContainer = document.getElementById('streamContainer');
 const streamFrame = document.getElementById('youtubeStreamFrame');
 const streamPlaceholder = document.getElementById('streamPlaceholder');
-if (streamContainer && streamFrame && streamPlaceholder) {
+const streamThumbnail = document.getElementById('streamThumbnail');
+if (streamContainer && streamFrame && streamPlaceholder && streamThumbnail) {
   const youtubeId = streamContainer.dataset.youtubeId.trim();
   if (youtubeId) {
-    streamFrame.src = `https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1&playsinline=1&rel=0`;
-    streamFrame.style.display = 'block';
-    streamPlaceholder.style.display = 'none';
+    streamThumbnail.src = `https://i.ytimg.com/vi/${youtubeId}/hqdefault.jpg`;
+    const startStream = () => {
+      streamFrame.src = `https://www.youtube-nocookie.com/embed/${youtubeId}?autoplay=1&playsinline=1&rel=0&modestbranding=1&iv_load_policy=3&fs=0`;
+      streamFrame.style.display = 'block';
+      streamPlaceholder.style.display = 'none';
+    };
+    streamPlaceholder.addEventListener('click', startStream, { once:true });
+    streamPlaceholder.addEventListener('keydown', e => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        startStream();
+      }
+    }, { once:true });
   }
 }
 
