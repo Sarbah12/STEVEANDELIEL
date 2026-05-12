@@ -439,6 +439,35 @@
     border-radius:999px;
   }
 
+  .outline-footer {
+    margin-top:1.35rem;
+    padding:1.1rem 1.2rem;
+    border-radius:1.2rem;
+    border:1px solid rgba(155,143,212,.18);
+    background:rgba(255,255,255,.88);
+    text-align:center;
+    box-shadow:0 12px 28px rgba(26,31,110,.05);
+  }
+
+  .outline-footer-copy {
+    font-size:.7rem;
+    line-height:1.8;
+    letter-spacing:.1em;
+    color:var(--muted);
+  }
+
+  .outline-footer-copy a {
+    color:var(--navy);
+    text-decoration:none;
+    border-bottom:1px solid rgba(26,31,110,.18);
+    transition:color .25s ease,border-color .25s ease;
+  }
+
+  .outline-footer-copy a:hover {
+    color:var(--magenta);
+    border-color:var(--magenta);
+  }
+
   @keyframes fadeUp {
     from { opacity:0; transform:translateY(14px); }
     to { opacity:1; transform:none; }
@@ -653,6 +682,17 @@
     .story-title {
       font-size:1.14rem;
     }
+
+    .outline-footer {
+      margin-top:1rem;
+      padding:.95rem .85rem;
+      border-radius:1rem;
+    }
+
+    .outline-footer-copy {
+      font-size:.64rem;
+      letter-spacing:.07em;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -847,6 +887,10 @@
             </div>
           </li>
         </ol>
+
+        <footer class="outline-footer">
+          <p class="outline-footer-copy">Website designed by <a href="https://yawsarbah.com" target="_blank" rel="noopener noreferrer">yawsarbah.com</a> · <a href="tel:0244033373">0244033373</a></p>
+        </footer>
       </section>
     </div>
   </main>
