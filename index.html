@@ -598,6 +598,51 @@
   .cd-num { font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,8vw,5.5rem);font-weight:300;color:white;line-height:1; }
   .cd-unit{font-size:.57rem;letter-spacing:.45em;text-transform:uppercase;color:rgba(255,255,255,.8);margin-top:.4rem;font-weight:300;}
   .cd-sep { font-family:'Cormorant Garamond',serif;font-size:3rem;color:var(--lavender);align-self:center;padding-bottom:.5rem;opacity:.5; }
+  .countdown-live-panel {
+    display:none;
+    max-width:680px;
+    margin:2.4rem auto 0;
+    padding:2rem;
+    border:1px solid rgba(255,255,255,.18);
+    background:rgba(255,255,255,.08);
+    color:var(--white);
+    backdrop-filter:blur(10px);
+    box-shadow:0 24px 60px rgba(0,0,0,.18);
+  }
+  .countdown-live-title {
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(2.2rem,5vw,3.6rem);
+    font-weight:300;
+    line-height:1;
+    margin-bottom:.8rem;
+  }
+  .countdown-live-copy {
+    max-width:520px;
+    margin:0 auto 1.3rem;
+    font-size:.95rem;
+    line-height:1.8;
+    color:rgba(255,255,255,.84);
+    font-weight:300;
+  }
+  .countdown-live-btn {
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-height:3rem;
+    padding:.8rem 1.4rem;
+    border:1px solid rgba(255,255,255,.24);
+    background:var(--white);
+    color:var(--dark);
+    text-decoration:none;
+    font-size:.68rem;
+    letter-spacing:.25em;
+    text-transform:uppercase;
+    font-weight:400;
+    transition:transform .25s ease,background .25s ease;
+  }
+  .countdown-live-btn:hover { transform:translateY(-1px); background:var(--light); }
+  .countdown-sect.is-live .cd-grid { display:none; }
+  .countdown-sect.is-live .countdown-live-panel { display:block; }
 
   /* ── STORY ── */
   .story-sect {
@@ -1154,6 +1199,98 @@
   .photo-banner { overflow: hidden; }
   .photo-banner img { transition: transform .1s linear; }
 
+  /* ── RESPONSIVE HARDENING ── */
+  @media(max-width:1024px){
+    .nav { padding:1rem 1.5rem; }
+    .nav-links { gap:1.35rem; }
+    .nav-links a { font-size:.68rem;letter-spacing:.14em; }
+    .section,.stream-sect,.countdown-sect { padding:4.5rem 1.5rem; }
+    .hero-left { padding:7rem 1.5rem 5.5rem; }
+    .slideshow { height:min(82vh,720px);min-height:520px; }
+  }
+
+  @media(max-width:768px){
+    html { scroll-padding-top:72px; }
+    .nav { background:rgba(14,12,30,.72);backdrop-filter:blur(12px); }
+    .mob-menu { padding:5rem 1.5rem 2rem;gap:1.4rem;overflow-y:auto; }
+    .mob-menu a { font-size:clamp(1.65rem,9vw,2.15rem);line-height:1.05; }
+    .hero { min-height:100svh; }
+    .hero-left { min-height:100svh;padding:6.2rem 1rem 4.2rem; }
+    .hero-eyebrow { letter-spacing:.38em;margin-bottom:1.1rem; }
+    .name1,.name2 { font-size:clamp(3rem,16vw,5.8rem); }
+    .hero-rule { margin:1.4rem auto;max-width:220px; }
+    .hero-meta { line-height:1.7; }
+    .hero-cta,.map-btn,.rc-btn,.gift-copy-btn {
+      width:100%;
+      max-width:340px;
+      min-height:44px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      white-space:normal;
+      line-height:1.35;
+    }
+    .scroll-cue { display:none; }
+    .welcome-body,.rsvp-body { padding:3.5rem 1rem; }
+    .welcome-card { padding:2.25rem 1.25rem; }
+    .section,.stream-sect,.countdown-sect { padding:3.8rem 1rem; }
+    .sec-eyebrow,.slide-date,.ft-date,.ft-copy { letter-spacing:.26em; }
+    .sec-title { font-size:clamp(2rem,11vw,3rem); }
+    .stream-shell { gap:1rem;margin-top:1.6rem; }
+    .stream-player-card,.stream-info-card { border-radius:0; }
+    .stream-player-card { padding:.55rem; }
+    .stream-placeholder { padding:.75rem; }
+    .stream-placeholder-overlay { padding:1rem;gap:.75rem; }
+    .stream-play-btn { width:60px;height:60px; }
+    .stream-live-pill { font-size:.56rem;letter-spacing:.16em;padding:.4rem .6rem; }
+    .stream-placeholder-title { font-size:clamp(1.75rem,9vw,2.6rem); }
+    .stream-info-card { padding:1.25rem 1rem; }
+    .photo-banner { height:46vh;min-height:320px; }
+    .cd-grid {
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:1rem;
+      max-width:420px;
+      margin:2rem auto 0;
+    }
+    .cd-item {
+      min-height:8.5rem;
+      justify-content:center;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.06);
+    }
+    .cd-num { font-size:clamp(3rem,16vw,4.5rem); }
+    .cd-unit { letter-spacing:.24em; }
+    .countdown-live-panel { padding:1.45rem 1rem; }
+    .countdown-live-btn { width:100%; }
+    .st-bottom-banner { margin-top:3rem;padding:2.5rem 1rem; }
+    .ii { gap:1rem;margin-bottom:1rem; }
+    .ii-content { padding:1.15rem 1rem; }
+    .rsvp-photo,.footer-photo-strip { height:38vh;min-height:280px; }
+    .gift-card-top,.gift-card-body { padding:1.4rem 1rem; }
+    .gift-row { align-items:flex-start;gap:1rem; }
+    .gr-value { overflow-wrap:anywhere; }
+    .footer { padding:3rem 1rem 2rem; }
+  }
+
+  @media(max-width:420px){
+    .nav { padding:.85rem 1rem; }
+    .nav-logo { font-size:1.1rem; }
+    .hamburger { padding:.4rem; }
+    .hero-left { padding-left:.75rem;padding-right:.75rem; }
+    .hero-tag { letter-spacing:.16em;line-height:1.7; }
+    .slide-logo { font-size:clamp(4rem,22vw,6.5rem); }
+    .slide-content { padding:1rem; }
+    .cd-grid { gap:.7rem; }
+    .cd-item { min-height:7.3rem; }
+    .cd-num { font-size:clamp(2.5rem,18vw,3.8rem); }
+    .cd-unit { font-size:.5rem;letter-spacing:.18em; }
+    .gallery-ticker { padding:.85rem 0; }
+    .ticker-track span { font-size:.55rem;letter-spacing:.25em; }
+    .ft-venue,.ft-credit { overflow-wrap:anywhere; }
+  }
+
 </style>
 </head>
 <body>
@@ -1209,7 +1346,7 @@
       <div class="hero-meta">12:00 Noon &nbsp;·&nbsp; Charismatic Evangelistic Ministry<br>North Legon, Accra, Ghana</div>
     </div>
     <p class="hero-tag" style="color:white;opacity:1;animation:none;">Together with their families · 16 · 05 · 2026</p>
-    <a href="/outline/" class="hero-cta">Programme Outline</a>
+    <a href="/outline/" class="hero-cta" id="heroPrimaryCta">Programme Outline</a>
   </div>
   <div class="scroll-cue">
     <span>Scroll</span>
@@ -1259,9 +1396,9 @@
 </div>
 
 <!-- ══════════ COUNTDOWN ══════════ -->
-<section class="countdown-sect">
+<section class="countdown-sect" id="countdown">
   <p class="sec-eyebrow fu">Mark Your Calendars</p>
-  <h2 class="sec-title fu d1">Counting Down <em>With Joy</em></h2>
+  <h2 class="sec-title fu d1" id="countdownTitle">Counting Down <em>With Joy</em></h2>
   <div class="cd-grid fu d2">
     <div class="cd-item"><span class="cd-num" id="cd-d">00</span><span class="cd-unit">Days</span></div>
     <div class="cd-sep">:</div>
@@ -1270,6 +1407,11 @@
     <div class="cd-item"><span class="cd-num" id="cd-m">00</span><span class="cd-unit">Minutes</span></div>
     <div class="cd-sep">:</div>
     <div class="cd-item"><span class="cd-num" id="cd-s">00</span><span class="cd-unit">Seconds</span></div>
+  </div>
+  <div class="countdown-live-panel" id="countdownLivePanel" aria-live="polite">
+    <h3 class="countdown-live-title">The Wedding Has Started</h3>
+    <p class="countdown-live-copy">Join Stephen and Eliel's celebration live now. Tap below to go straight to the livestream.</p>
+    <a class="countdown-live-btn" href="#livestream">Watch Livestream</a>
   </div>
 </section>
 
@@ -1693,14 +1835,17 @@
 // ── Cursor ──
 const cur = document.getElementById('cursor');
 const ring = document.getElementById('cursorRing');
-document.addEventListener('mousemove', e => {
-  cur.style.left = e.clientX + 'px'; cur.style.top = e.clientY + 'px';
-  ring.style.left = e.clientX + 'px'; ring.style.top = e.clientY + 'px';
-});
+if (cur && ring) {
+  document.addEventListener('mousemove', e => {
+    cur.style.left = e.clientX + 'px'; cur.style.top = e.clientY + 'px';
+    ring.style.left = e.clientX + 'px'; ring.style.top = e.clientY + 'px';
+  });
+}
 
 // ── Nav scroll ──
 window.addEventListener('scroll', () => {
-  document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 60);
+  var mainNav = document.getElementById('mainNav');
+  if (mainNav) mainNav.classList.toggle('scrolled', window.scrollY > 60);
 });
 
 // ── Mobile menu ──
@@ -1736,40 +1881,54 @@ if (streamContainer && streamFrame && streamPlaceholder && streamThumbnail) {
 }
 
 // ── Countdown ──
-function tick() {
-  var diff = new Date('2026-05-16T12:00:00') - new Date();
-  if (diff <= 0) return;
-  document.getElementById('cd-d').textContent = String(Math.floor(diff/86400000)).padStart(2,'0');
-  document.getElementById('cd-h').textContent = String(Math.floor(diff%86400000/3600000)).padStart(2,'0');
-  document.getElementById('cd-m').textContent = String(Math.floor(diff%3600000/60000)).padStart(2,'0');
-  document.getElementById('cd-s').textContent = String(Math.floor(diff%60000/1000)).padStart(2,'0');
+var weddingStart = new Date('2026-05-16T12:00:00+00:00');
+var countdownTimer;
+function setText(id, value) {
+  var el = document.getElementById(id);
+  if (el) el.textContent = value;
 }
-tick(); setInterval(tick, 1000);
-
-// ── Mini countdown ──
-function tickMini() {
-  var diff = new Date('2026-05-16T12:00:00') - new Date();
-  if (diff <= 0) return;
-  var d = document.getElementById('im-d'), h = document.getElementById('im-h'), m = document.getElementById('im-m'), s = document.getElementById('im-s');
-  if (d) d.textContent = String(Math.floor(diff/86400000)).padStart(3,'0');
-  if (h) h.textContent = String(Math.floor(diff%86400000/3600000)).padStart(2,'0');
-  if (m) m.textContent = String(Math.floor(diff%3600000/60000)).padStart(2,'0');
-  if (s) s.textContent = String(Math.floor(diff%60000/1000)).padStart(2,'0');
+function setWeddingLiveState() {
+  var countdown = document.getElementById('countdown');
+  var title = document.getElementById('countdownTitle');
+  var heroCta = document.getElementById('heroPrimaryCta');
+  if (countdown) countdown.classList.add('is-live');
+  if (title) title.innerHTML = 'The Wedding <em>Has Started</em>';
+  if (heroCta) {
+    heroCta.href = '#livestream';
+    heroCta.textContent = 'Watch Livestream';
+  }
+  ['cd-d','cd-h','cd-m','cd-s','im-d','im-h','im-m','im-s','cd-days','cd-hrs','cd-min','cd-sec'].forEach(function(id){
+    setText(id, '00');
+  });
+  if (countdownTimer) clearInterval(countdownTimer);
 }
-tickMini(); setInterval(tickMini, 1000);
+function updateCountdown() {
+  var diff = weddingStart - new Date();
+  if (diff <= 0) {
+    setWeddingLiveState();
+    return;
+  }
 
+  var days = Math.floor(diff / 86400000);
+  var hours = Math.floor(diff % 86400000 / 3600000);
+  var minutes = Math.floor(diff % 3600000 / 60000);
+  var seconds = Math.floor(diff % 60000 / 1000);
 
-// ── Main countdown ──
-function tickMain(){
-  var diff=new Date('2026-05-16T12:00:00')-new Date();
-  if(diff<=0)return;
-  var g=function(id){return document.getElementById(id);};
-  if(g('cd-days'))g('cd-days').textContent=String(Math.floor(diff/86400000)).padStart(2,'0');
-  if(g('cd-hrs')) g('cd-hrs').textContent =String(Math.floor(diff%86400000/3600000)).padStart(2,'0');
-  if(g('cd-min')) g('cd-min').textContent =String(Math.floor(diff%3600000/60000)).padStart(2,'0');
-  if(g('cd-sec')) g('cd-sec').textContent =String(Math.floor(diff%60000/1000)).padStart(2,'0');
+  setText('cd-d', String(days).padStart(2,'0'));
+  setText('cd-h', String(hours).padStart(2,'0'));
+  setText('cd-m', String(minutes).padStart(2,'0'));
+  setText('cd-s', String(seconds).padStart(2,'0'));
+  setText('im-d', String(days).padStart(3,'0'));
+  setText('im-h', String(hours).padStart(2,'0'));
+  setText('im-m', String(minutes).padStart(2,'0'));
+  setText('im-s', String(seconds).padStart(2,'0'));
+  setText('cd-days', String(days).padStart(2,'0'));
+  setText('cd-hrs', String(hours).padStart(2,'0'));
+  setText('cd-min', String(minutes).padStart(2,'0'));
+  setText('cd-sec', String(seconds).padStart(2,'0'));
 }
-tickMain(); setInterval(tickMain,1000);
+updateCountdown();
+countdownTimer = setInterval(updateCountdown,1000);
 
 // ── Nav ──
 var nav=document.getElementById('mainNav');
