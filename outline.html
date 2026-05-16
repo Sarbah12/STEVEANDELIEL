@@ -234,11 +234,14 @@
     min-height:2.95rem;
     padding:.78rem 1rem;
     border-radius:999px;
+    border:0;
     text-decoration:none;
     font-size:.68rem;
     letter-spacing:.24em;
     text-transform:uppercase;
     font-weight:400;
+    font-family:'Jost',sans-serif;
+    cursor:pointer;
     transition:transform .25s ease,background .25s ease,border-color .25s ease,color .25s ease;
   }
 
@@ -494,6 +497,7 @@
     justify-content:center;
     min-height:2.7rem;
     padding:.72rem 1rem;
+    border:0;
     border-radius:999px;
     background:var(--white);
     color:var(--dark);
@@ -501,12 +505,172 @@
     font-size:.66rem;
     letter-spacing:.2em;
     text-transform:uppercase;
+    font-family:'Jost',sans-serif;
+    cursor:pointer;
     transition:transform .25s ease,background .25s ease;
   }
 
   .download-button:hover {
     transform:translateY(-1px);
     background:#f5f4f9;
+  }
+
+  .pdf-popup {
+    position:fixed;
+    inset:0;
+    z-index:100;
+    display:grid;
+    place-items:center;
+    padding:1rem;
+    background:rgba(14,12,30,.72);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transition:opacity .25s ease,visibility .25s ease;
+  }
+
+  .pdf-popup.is-open {
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+  }
+
+  .pdf-popup-dialog {
+    width:min(520px,100%);
+    max-height:min(88vh,620px);
+    display:grid;
+    grid-template-rows:auto 1fr auto;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.18);
+    border-radius:1.35rem;
+    background:var(--white);
+    box-shadow:0 28px 80px rgba(4,6,18,.32);
+    transform:translateY(12px) scale(.98);
+    transition:transform .25s ease;
+  }
+
+  .pdf-popup.is-open .pdf-popup-dialog {
+    transform:none;
+  }
+
+  .pdf-popup-header,
+  .pdf-popup-actions {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:1rem;
+    padding:1rem 1.1rem;
+  }
+
+  .pdf-popup-header {
+    border-bottom:1px solid rgba(155,143,212,.18);
+  }
+
+  .pdf-popup-title {
+    font-family:'Cormorant Garamond',serif;
+    font-weight:300;
+    font-size:1.75rem;
+    line-height:1;
+    color:var(--navy);
+  }
+
+  .pdf-popup-close {
+    display:grid;
+    place-items:center;
+    width:2.45rem;
+    height:2.45rem;
+    border:1px solid rgba(155,143,212,.28);
+    border-radius:50%;
+    background:var(--light);
+    color:var(--navy);
+    font-size:1.35rem;
+    line-height:1;
+    cursor:pointer;
+  }
+
+  .pdf-popup-body {
+    padding:1.25rem 1.1rem 1.35rem;
+    background:
+      linear-gradient(135deg,rgba(51,64,196,.08),transparent 34%),
+      linear-gradient(180deg,var(--white),rgba(245,244,249,.9));
+  }
+
+  .pdf-file-card {
+    display:grid;
+    gap:.9rem;
+    padding:1.2rem;
+    border:1px solid rgba(155,143,212,.22);
+    border-radius:1rem;
+    background:var(--white);
+    box-shadow:0 16px 34px rgba(26,31,110,.08);
+  }
+
+  .pdf-file-label {
+    width:3.4rem;
+    height:4.35rem;
+    display:grid;
+    place-items:center;
+    border-radius:.7rem;
+    background:var(--navy);
+    color:var(--white);
+    font-size:.72rem;
+    letter-spacing:.18em;
+  }
+
+  .pdf-file-name {
+    font-family:'Cormorant Garamond',serif;
+    font-size:2rem;
+    line-height:1;
+    font-weight:300;
+    color:var(--navy);
+  }
+
+  .pdf-file-meta {
+    font-size:.72rem;
+    line-height:1.7;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--muted);
+  }
+
+  .pdf-popup-actions {
+    border-top:1px solid rgba(155,143,212,.18);
+    background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(245,244,249,.78));
+  }
+
+  .pdf-popup-copy {
+    font-size:.72rem;
+    line-height:1.55;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--muted);
+  }
+
+  .pdf-popup-download {
+    flex:0 0 auto;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    min-height:2.7rem;
+    padding:.72rem 1rem;
+    border-radius:999px;
+    background:var(--navy);
+    color:var(--white);
+    text-decoration:none;
+    font-size:.66rem;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+  }
+
+  .pdf-popup-open {
+    color:var(--navy);
+    font-size:.66rem;
+    letter-spacing:.18em;
+    text-decoration:none;
+    text-transform:uppercase;
+    border-bottom:1px solid rgba(26,31,110,.22);
   }
 
   .outline-footer {
@@ -702,6 +866,23 @@
       border-radius:.8rem;
       padding:.45rem .55rem;
     }
+
+    .pdf-popup-actions {
+      align-items:stretch;
+      flex-direction:column;
+    }
+
+    .pdf-popup-download {
+      width:100%;
+    }
+
+    .pdf-popup-open {
+      align-self:center;
+    }
+
+    .pdf-file-name {
+      font-size:1.65rem;
+    }
   }
 
   @media (max-width:460px) {
@@ -774,6 +955,23 @@
       font-size:.64rem;
       letter-spacing:.07em;
     }
+
+    .pdf-popup {
+      padding:.7rem;
+    }
+
+    .pdf-popup-header,
+    .pdf-popup-actions {
+      padding:.9rem;
+    }
+
+    .pdf-popup-title {
+      font-size:1.45rem;
+    }
+
+    .pdf-popup-body {
+      padding:.9rem;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -802,7 +1000,7 @@
             <p class="page-summary">The church service moves from welcome and worship into vows, blessing, communion, signing, thanksgiving, and joyful recession.</p>
             <div class="hero-actions">
               <a class="hero-cta hero-cta-primary" href="#order-of-service">Jump to Programme</a>
-              <a class="hero-cta hero-cta-secondary" href="/downloads/SEVOWS-2026.pdf" download>Download PDF</a>
+              <button class="hero-cta hero-cta-secondary" type="button" data-pdf-popup>Download PDF</button>
             </div>
           </div>
         </div>
@@ -981,7 +1179,7 @@
 
         <section class="download-panel" aria-label="Download full wedding programme">
           <p class="download-copy">Download the full SEVOWS 2026 wedding programme PDF.</p>
-          <a class="download-button" href="/downloads/SEVOWS-2026.pdf" download>Download PDF</a>
+          <button class="download-button" type="button" data-pdf-popup>Download PDF</button>
         </section>
 
         <footer class="outline-footer">
@@ -990,5 +1188,75 @@
       </section>
     </div>
   </main>
+
+  <div class="pdf-popup" id="pdfPopup" role="dialog" aria-modal="true" aria-labelledby="pdfPopupTitle" aria-hidden="true">
+    <div class="pdf-popup-dialog" role="document">
+      <div class="pdf-popup-header">
+        <h2 class="pdf-popup-title" id="pdfPopupTitle">SEVOWS 2026 Programme</h2>
+        <button class="pdf-popup-close" type="button" aria-label="Close PDF popup" data-pdf-close>&times;</button>
+      </div>
+      <div class="pdf-popup-body">
+        <div class="pdf-file-card">
+          <div class="pdf-file-label">PDF</div>
+          <div>
+            <p class="pdf-file-name">Wedding Programme</p>
+            <p class="pdf-file-meta">SEVOWS 2026 · Full order of service</p>
+          </div>
+        </div>
+      </div>
+      <div class="pdf-popup-actions">
+        <p class="pdf-popup-copy">Save the full programme PDF to your device.</p>
+        <a class="pdf-popup-open" href="/downloads/SEVOWS-2026.pdf" target="_blank" rel="noopener noreferrer">Open PDF</a>
+        <a class="pdf-popup-download" href="/downloads/SEVOWS-2026.pdf" download>Download PDF</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var popup = document.getElementById("pdfPopup");
+      var openButtons = document.querySelectorAll("[data-pdf-popup]");
+      var closeButtons = document.querySelectorAll("[data-pdf-close]");
+      var lastFocused = null;
+
+      function openPopup() {
+        lastFocused = document.activeElement;
+        popup.classList.add("is-open");
+        popup.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+        var closeButton = popup.querySelector("[data-pdf-close]");
+        if (closeButton) closeButton.focus();
+      }
+
+      function closePopup() {
+        popup.classList.remove("is-open");
+        popup.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+        if (lastFocused && typeof lastFocused.focus === "function") {
+          lastFocused.focus();
+        }
+      }
+
+      openButtons.forEach(function (button) {
+        button.addEventListener("click", openPopup);
+      });
+
+      closeButtons.forEach(function (button) {
+        button.addEventListener("click", closePopup);
+      });
+
+      popup.addEventListener("click", function (event) {
+        if (event.target === popup) closePopup();
+      });
+
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && popup.classList.contains("is-open")) {
+          closePopup();
+        }
+      });
+
+      window.addEventListener("load", openPopup);
+    }());
+  </script>
 </body>
 </html>
