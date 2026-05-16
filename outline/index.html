@@ -538,8 +538,8 @@
   }
 
   .pdf-popup-dialog {
-    width:min(520px,100%);
-    max-height:min(88vh,620px);
+    width:min(500px,100%);
+    max-height:92vh;
     display:grid;
     grid-template-rows:auto 1fr auto;
     overflow:hidden;
@@ -591,7 +591,8 @@
   }
 
   .pdf-popup-body {
-    padding:1.25rem 1.1rem 1.35rem;
+    overflow:auto;
+    padding:1rem;
     background:
       linear-gradient(135deg,rgba(51,64,196,.08),transparent 34%),
       linear-gradient(180deg,var(--white),rgba(245,244,249,.9));
@@ -599,24 +600,22 @@
 
   .pdf-file-card {
     display:grid;
-    gap:.9rem;
-    padding:1.2rem;
+    gap:.75rem;
+    padding:.7rem;
     border:1px solid rgba(155,143,212,.22);
     border-radius:1rem;
     background:var(--white);
     box-shadow:0 16px 34px rgba(26,31,110,.08);
   }
 
-  .pdf-file-label {
-    width:3.4rem;
-    height:4.35rem;
-    display:grid;
-    place-items:center;
+  .pdf-cover-image {
+    display:block;
+    width:100%;
+    max-height:58vh;
+    aspect-ratio:2480 / 3508;
+    object-fit:contain;
     border-radius:.7rem;
-    background:var(--navy);
-    color:var(--white);
-    font-size:.72rem;
-    letter-spacing:.18em;
+    background:var(--light);
   }
 
   .pdf-file-name {
@@ -1197,7 +1196,7 @@
       </div>
       <div class="pdf-popup-body">
         <div class="pdf-file-card">
-          <div class="pdf-file-label">PDF</div>
+          <img class="pdf-cover-image" src="/sevows-cover.jpg" alt="SEVOWS wedding programme cover">
           <div>
             <p class="pdf-file-name">Wedding Programme</p>
             <p class="pdf-file-meta">SEVOWS 2026 · Full order of service</p>
